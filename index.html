@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 
 <head>
   <meta charset="UTF-8" />
@@ -7,14 +7,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     :root {
-      --bg: #f5f5f7;
+      --bg: #e8ecf3;
       --card-bg: #ffffff;
-      --accent: #2563eb;
-      --accent-soft: #dbeafe;
-      --text-main: #111827;
-      --text-muted: #6b7280;
-      --border: #e5e7eb;
+      --accent: #1d4ed8;
+      --accent-soft: #d6e4ff;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --border: #d2d9e5;
+      --header-from: #1d4ed8;
+      --header-to: #3b82f6;
+      --surface-subtle: #f8fafc;
       --radius: 12px;
+    }
+
+    [data-theme="dark"] {
+      --bg: #0b1220;
+      --card-bg: #0f172a;
+      --accent: #9abafe;
+      --accent-soft: #1e293b;
+      --text-main: #e6eeff;
+      --text-muted: #a6b4cb;
+      --border: #1f2a3d;
+      --header-from: #0f172a;
+      --header-to: #1e3a8a;
+      --surface-subtle: #111827;
     }
 
     * {
@@ -31,7 +47,7 @@
     }
 
     header {
-      background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+      background: linear-gradient(135deg, var(--header-from), var(--header-to));
       color: white;
       padding: 2.5rem 1rem 3rem;
     }
@@ -171,6 +187,12 @@
       padding-bottom: 3rem;
     }
 
+    @media (max-width: 640px) {
+      main {
+        margin-top: -1.4rem;
+      }
+    }
+
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -182,7 +204,7 @@
       background: var(--card-bg);
       border-radius: var(--radius);
       border: 1px solid var(--border);
-      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.09);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
       padding: 1.3rem 1.5rem;
     }
 
@@ -287,6 +309,12 @@
       background: #f3f4f6;
     }
 
+    .btn:focus-visible {
+      outline: 2px solid #93c5fd;
+      outline-offset: 2px;
+      box-shadow: 0 0 0 4px rgba(147, 197, 253, 0.35);
+    }
+
     .btn-primary:hover {
       background: #1d4ed8;
     }
@@ -378,6 +406,50 @@
       text-decoration: underline;
     }
 
+    .recommend-link:focus-visible {
+      outline: 2px solid #bfdbfe;
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
+    [data-theme="dark"] .recommend-link {
+      color: #b9d5ff;
+    }
+
+    .file-list a {
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .file-list a:hover,
+    .file-list a:focus-visible {
+      text-decoration: underline;
+    }
+
+    [data-theme="dark"] .file-list a {
+      color: #b9d5ff;
+    }
+
+    [data-theme="dark"] .card {
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    [data-theme="dark"] .btn {
+      background: #111827;
+      border-color: var(--border);
+      color: var(--text-main);
+    }
+
+    [data-theme="dark"] .btn:hover {
+      background: #0b1627;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
+    }
+
+    [data-theme="dark"] .btn-primary {
+      color: #0b1220;
+    }
+
     .recommend-links {
       display: contents;
     }
@@ -393,6 +465,43 @@
       padding: 1.5rem 0 0.75rem;
     }
 
+    .theme-toggle {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 0.75rem;
+    }
+
+    .theme-toggle button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #ffffff;
+      color: var(--text-main);
+      cursor: pointer;
+      font-size: 0.9rem;
+      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.08);
+      transition: transform 0.08s, box-shadow 0.12s, background 0.15s;
+    }
+
+    .theme-toggle button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 22px rgba(15, 23, 42, 0.12);
+    }
+
+    .theme-toggle button:focus-visible {
+      outline: 2px solid #93c5fd;
+      outline-offset: 2px;
+    }
+
+    [data-theme="dark"] .theme-toggle button {
+      background: #111827;
+      color: var(--text-main);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4);
+    }
+
     .audience-list {
       display: flex;
       flex-direction: column;
@@ -406,7 +515,7 @@
       gap: 0.6rem;
       padding: 0.5rem 0.6rem;
       border-radius: 8px;
-      background: #f9fafb;
+      background: var(--surface-subtle);
       border: 1px solid var(--border);
     }
 
@@ -492,6 +601,9 @@
 <body>
   <header>
     <div class="container">
+      <div class="theme-toggle">
+        <button id="theme-toggle" type="button" aria-pressed="false">🌙 Dark mode</button>
+      </div>
       <div class="header-inner">
         <img src="brand-mark.jpg" alt="Christian Warfare logo" class="brand-mark" onerror="this.style.display='none'">
         <div class="header-copy">
@@ -552,7 +664,6 @@
 
       <h2 class="section-title">Not sure where to go?</h2>
       <div class="card">
-        <p style="margin-top:0;">If you’re unsure:</p>
         <ul class="steps">
           <li>
             <span class="step-number">1</span>
@@ -613,7 +724,38 @@
   <script src="content.js"></script>
   <script>
     (function () {
+      const THEME_KEY = "cw-theme";
+      const savedTheme = localStorage.getItem(THEME_KEY);
+      const initialTheme = savedTheme || "light";
+      const root = document.documentElement;
+
+      function applyTheme(mode) {
+        root.setAttribute("data-theme", mode);
+        const btn = document.getElementById("theme-toggle");
+        if (btn) {
+          const isDark = mode === "dark";
+          btn.setAttribute("aria-pressed", String(isDark));
+          btn.textContent = isDark ? "☀️ Light mode" : "🌙 Dark mode";
+        }
+      }
+
+      applyTheme(initialTheme);
+
+      const toggleBtn = document.getElementById("theme-toggle");
+      if (toggleBtn) {
+        toggleBtn.addEventListener("click", () => {
+          const current = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+          localStorage.setItem(THEME_KEY, current);
+          applyTheme(current);
+        });
+      }
+
       const data = window.DRIVE_CONTENT || {};
+      const isMeaningful = (value) => {
+        if (!value) return false;
+        const trimmed = String(value).trim();
+        return trimmed && !/^\.{2,}$/.test(trimmed) && !/^,{2,}$/.test(trimmed);
+      };
 
       // Start here card intentionally disabled until content is ready.
       // const startCard = document.getElementById("start-here-card");
@@ -647,9 +789,12 @@
 
       listEl.innerHTML = data.folders
         .map(folder => {
+          const hasAudience = isMeaningful(folder.audience);
+          const hasDescription = isMeaningful(folder.description);
           const highlights = (folder.highlights || [])
             .map(h => {
-              const text = `<strong>${h.title}</strong>${h.note ? ` – ${h.note}` : ""}`;
+              const note = isMeaningful(h.note) ? h.note : "";
+              const text = `<strong>${h.title}</strong>${note ? ` – ${note}` : ""}`;
               if (h.url) {
                 return `<li><a href="${h.url}" target="_blank" rel="noopener">${text}</a></li>`;
               }
@@ -662,11 +807,8 @@
               <div class="folder-header">
                 <div class="folder-meta">
                   <div class="folder-title">${folder.title}</div>
-                  ${folder.audience
-              ? `<div class="folder-audience">${folder.audience}</div>`
-              : ""
-            }
-                  <p class="folder-description">${folder.description || ""}</p>
+                  ${hasAudience ? `<div class="folder-audience">${folder.audience}</div>` : ""}
+                  ${hasDescription ? `<p class="folder-description">${folder.description}</p>` : ""}
               </div>
               ${folder.driveUrl
               ? `<a class="btn" href="${folder.driveUrl}" target="_blank" rel="noopener">Open folder</a>`

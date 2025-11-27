@@ -14,7 +14,7 @@ window.DRIVE_CONTENT = {
   folders: [
     {
       id: "root-library",
-      title: "Browse the entire library",
+      title: "Browse The Entire Library",
       driveUrl: "https://drive.google.com/drive/folders/1Av9oLn05XxhSIHJZDPW0dvS-v_iuo6hb",
       description: "See every folder and file in one place if you prefer to explore freely.",
       audience: "Anyone who wants to jump straight into the Drive root.",
