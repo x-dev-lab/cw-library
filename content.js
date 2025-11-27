@@ -51,12 +51,12 @@ window.DRIVE_CONTENT = {
       audience: "Mature believers, intercessors, prayer leaders.",
       highlights: [
         {
-          title: "Biblical Warfare Prayers.pdf",
+          title: "Biblical Warfare Prayers",
           note: "Biblical spiritual warfare",
           url: "https://drive.google.com/file/d/1CbPjXLYVlzf04ogeWi1-dNjfGmhuf97-/view?usp=drive_link"
         },
         {
-          title: "Prayer leaders manual.pdf",
+          title: "Prayer Leaders Manual",
           note: "For those leading groups or prayer meetings.",
           url: "https://drive.google.com/file/d/1lMA1Dohyut6GF3fMOMaC7EcVgLjQ5lEn/view?usp=drive_link"
         }
@@ -125,7 +125,7 @@ window.DRIVE_CONTENT = {
       title: "Helpful Reading Material",
       driveUrl: "https://drive.google.com/drive/folders/1gzrEm3w-5HPobcOInGegDVaFj54Iw9gD?usp=drive_link",
       description:
-        "HA collection of books that don't have a specific category but are useful for growth.",
+        "A collection of books that don't have a specific category but are useful for growth.",
       audience: "...",
       highlights: [
         {

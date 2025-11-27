@@ -75,10 +75,43 @@
       min-width: 280px;
     }
 
+    @media (max-width: 540px) {
+      header {
+        padding: 1.7rem 1rem 2.2rem;
+      }
+
+      .header-inner {
+        align-items: center;
+        text-align: center;
+      }
+
+      .header-copy {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .brand-mark {
+        width: 150px;
+        max-width: 60vw;
+      }
+
+      header h1,
+      header h2 {
+        font-size: 1.6rem;
+        line-height: 1.25;
+        margin-top: 0.4rem;
+      }
+
+      header p {
+        font-size: 0.95rem;
+      }
+    }
+
     @media (max-width: 800px) {
       .header-inner {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
       }
 
       .brand-mark {
@@ -104,11 +137,33 @@
       font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
+      flex-wrap: wrap;
+      justify-content: center;
+      text-align: center;
+      line-height: 1.35;
+    }
+
+    @media (max-width: 540px) {
+      .pill {
+        width: 100%;
+        max-width: 360px;
+        gap: 0.35rem 0.65rem;
+        padding: 0.55rem 0.85rem;
+        background: rgba(255, 255, 255, 0.16);
+      }
     }
 
     .pill span {
       font-size: 0.65rem;
       opacity: 0.8;
+    }
+
+    @media (max-width: 540px) {
+      .pill span {
+        width: 100%;
+        font-size: 0.68rem;
+        opacity: 0.95;
+      }
     }
 
     main {
@@ -147,31 +202,54 @@
       list-style: none;
       padding: 0;
       margin: 1rem 0 0;
-      counter-reset: step;
     }
 
     .steps li {
-      counter-increment: step;
       display: flex;
-      align-items: flex-start;
-      gap: 0.6rem;
-      margin-bottom: 0.6rem;
-      font-size: 0.95rem;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 0.7rem 0;
+      border-bottom: 1px solid var(--border);
     }
 
-    .steps li::before {
-      content: counter(step);
+    .steps li:last-child {
+      border-bottom: 0;
+    }
+
+    .step-number {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 1.4rem;
-      height: 1.4rem;
+      width: 1.6rem;
+      height: 1.6rem;
       border-radius: 999px;
       background: var(--accent-soft);
       color: #1d4ed8;
-      font-size: 0.8rem;
-      font-weight: 600;
+      font-size: 0.85rem;
+      font-weight: 700;
       flex-shrink: 0;
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08);
+      line-height: 1;
+    }
+
+    .step-body {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      font-size: 0.95rem;
+    }
+
+    .step-label {
+      margin: 0;
+      color: var(--text-main);
+      line-height: 1.4;
+    }
+
+    .step-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem 0.8rem;
+      align-items: center;
     }
 
     .btn-row {
@@ -227,7 +305,7 @@
       background: var(--card-bg);
       border-radius: 10px;
       border: 1px solid var(--border);
-      padding: 0.9rem 1rem;
+      padding: 1rem 1.1rem;
     }
 
     .folder-header {
@@ -237,14 +315,28 @@
       gap: 0.8rem;
     }
 
+    .folder-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
     .folder-title {
       font-weight: 600;
+      margin: 0;
     }
 
     .folder-audience {
       font-size: 0.8rem;
       color: var(--text-muted);
       margin-top: 0.1rem;
+    }
+
+    .folder-description {
+      margin: 0.35rem 0 0;
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.5;
     }
 
     .file-list {
@@ -287,17 +379,11 @@
     }
 
     .recommend-links {
-      display: inline-flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 0.5rem;
-      margin-left: 0.35rem;
+      display: contents;
     }
 
     .link-separator {
-      color: var(--text-muted);
-      font-weight: 600;
-      margin: 0 0.15rem;
+      display: none;
     }
 
     footer {
@@ -352,6 +438,54 @@
       border-top: 1px dashed var(--border);
       padding-top: 0.7rem;
     }
+
+    @media (min-width: 900px) {
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 0.9rem;
+      }
+
+      .steps li {
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 0.95rem 1rem;
+        background: #f9fafb;
+        box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
+        border-bottom: 0;
+      }
+
+      .step-links {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .folder-card {
+        padding: 0.95rem 1rem;
+      }
+
+      .folder-title {
+        font-size: 1.05rem;
+      }
+
+      .folder-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.6rem;
+      }
+
+      .folder-header .btn {
+        width: 100%;
+        justify-content: center;
+        align-self: stretch;
+      }
+
+      .folder-meta {
+        gap: 0.3rem;
+      }
+    }
   </style>
 </head>
 
@@ -365,7 +499,7 @@
             Christian Warfare Prayer & StudyLibrary
             <span>Guide to the Google Drive folders</span>
           </div>
-          <h2>Welcome to the Christian Warfare Prayer & Study Library</h1>
+          <h2>Welcome to the Christian Warfare Prayer & Study Library</h2>
           <p>This page is a simple guide to the Google Drive folders, explaining what each folder contains and helping you choose where to start—whether you are new to prayer or already leading others.</p>
         </div>
       </div>
@@ -421,32 +555,42 @@
         <p style="margin-top:0;">If you’re unsure:</p>
         <ul class="steps">
           <li>
-            If you are new to faith or prayer, start with:
-            <span class="recommend-links">
-              <a class="recommend-link" href="#beginner-prayer-books">Beginner Prayer books</a>
-              <span class="link-separator">·</span>
-              <a class="recommend-link" href="#homework-study-guides">Homework/Study guides</a>
-            </span>
+            <span class="step-number">1</span>
+            <div class="step-body">
+              <p class="step-label">If you are new to faith or prayer, start with:</p>
+              <div class="step-links recommend-links">
+                <a class="recommend-link" href="#beginner-prayer-books">Beginner Prayer books</a>
+                <a class="recommend-link" href="#homework-study-guides">Homework/Study guides</a>
+              </div>
+            </div>
           </li>
           <li>
-            If you already pray regularly, go to:
-            <span class="recommend-links">
-              <a class="recommend-link" href="#advanced-prayer-books">Advanced Prayer books</a>
-            </span>
+            <span class="step-number">2</span>
+            <div class="step-body">
+              <p class="step-label">If you already pray regularly, go to:</p>
+              <div class="step-links recommend-links">
+                <a class="recommend-link" href="#advanced-prayer-books">Advanced Prayer books</a>
+              </div>
+            </div>
           </li>
           <li>
-            If you want daily structure, try:
-            <span class="recommend-links">
-              <a class="recommend-link" href="#daily-devotionals">Daily devotionals</a>
-            </span>
+            <span class="step-number">3</span>
+            <div class="step-body">
+              <p class="step-label">If you want daily structure, try:</p>
+              <div class="step-links recommend-links">
+                <a class="recommend-link" href="#daily-devotionals">Daily devotionals</a>
+              </div>
+            </div>
           </li>
           <li>
-            If you’re leading or training others, jump to:
-            <span class="recommend-links">
-              <a class="recommend-link" href="#prophet-school">Prophet School</a>
-              <span class="link-separator">·</span>
-              <a class="recommend-link" href="#evangelist-training">Evangelist Training</a>
-            </span>
+            <span class="step-number">4</span>
+            <div class="step-body">
+              <p class="step-label">If you’re leading or training others, jump to:</p>
+              <div class="step-links recommend-links">
+                <a class="recommend-link" href="#prophet-school">Prophet School</a>
+                <a class="recommend-link" href="#evangelist-training">Evangelist Training</a>
+              </div>
+            </div>
           </li>
         </ul>
       </div>
@@ -516,15 +660,13 @@
           return `
             <article class="folder-card" id="${folder.id || ""}">
               <div class="folder-header">
-                <div>
+                <div class="folder-meta">
                   <div class="folder-title">${folder.title}</div>
                   ${folder.audience
               ? `<div class="folder-audience">${folder.audience}</div>`
               : ""
             }
-                  <p style="margin:0.3rem 0 0; font-size:0.9rem; color:var(--text-muted);">
-                    ${folder.description || ""}
-                  </p>
+                  <p class="folder-description">${folder.description || ""}</p>
               </div>
               ${folder.driveUrl
               ? `<a class="btn" href="${folder.driveUrl}" target="_blank" rel="noopener">Open folder</a>`
