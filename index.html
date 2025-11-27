@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Prayer Library – Google Drive Guide</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #f5f5f7;
+      --card-bg: #ffffff;
+      --accent: #2563eb;
+      --accent-soft: #dbeafe;
+      --text-main: #111827;
+      --text-muted: #6b7280;
+      --border: #e5e7eb;
+      --radius: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+      color: white;
+      padding: 2.5rem 1rem 3rem;
+    }
+
+    .brand-mark {
+      width: 180px;
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0;
+      filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.25));
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+      max-width: 900px;
+    }
+
+    header p {
+      margin-top: 0.75rem;
+      max-width: 940px;
+      color: #e5ecff;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      gap: 1.4rem;
+      flex-wrap: wrap;
+    }
+
+    .header-copy {
+      flex: 1 1 320px;
+      min-width: 280px;
+    }
+
+    @media (max-width: 800px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .brand-mark {
+        max-width: 220px;
+      }
+
+      .folder-header {
+        align-items: flex-start;
+      }
+
+      .folder-header .btn {
+        align-self: flex-start;
+      }
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.2rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.35);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .pill span {
+      font-size: 0.65rem;
+      opacity: 0.8;
+    }
+
+    main {
+      margin-top: -2rem;
+      padding-bottom: 3rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.09);
+      padding: 1.3rem 1.5rem;
+    }
+
+    .card h2 {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+      font-size: 1.3rem;
+    }
+
+    .card p {
+      margin: 0.3rem 0;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .steps {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0 0;
+      counter-reset: step;
+    }
+
+    .steps li {
+      counter-increment: step;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      margin-bottom: 0.6rem;
+      font-size: 0.95rem;
+    }
+
+    .steps li::before {
+      content: counter(step);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.4rem;
+      height: 1.4rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #1d4ed8;
+      font-size: 0.8rem;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      background: #f9fafb;
+      transition: background 0.15s, transform 0.08s, box-shadow 0.08s;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #ffffff;
+      border-color: transparent;
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.35);
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.10);
+      background: #f3f4f6;
+    }
+
+    .btn-primary:hover {
+      background: #1d4ed8;
+    }
+
+    .section-title {
+      font-size: 1.1rem;
+      margin: 1.5rem 0 0.7rem;
+    }
+
+    .folder-list {
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .folder-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      padding: 0.9rem 1rem;
+    }
+
+    .folder-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .folder-title {
+      font-weight: 600;
+    }
+
+    .folder-audience {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.1rem;
+    }
+
+    .file-list {
+      margin: 0.5rem 0 0;
+      padding-left: 1.1rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .file-list li {
+      margin-bottom: 0.25rem;
+    }
+
+    .folder-highlights {
+      margin-top: 0.6rem;
+    }
+
+    .folder-divider {
+      border: 0;
+      border-top: 1px solid var(--border);
+      margin: 0.8rem 0 0.5rem;
+    }
+
+    .folder-highlights-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 0.3rem;
+    }
+
+    .recommend-link {
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .recommend-link:hover,
+    .recommend-link:focus-visible {
+      text-decoration: underline;
+    }
+
+    .recommend-links {
+      display: inline-flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem;
+      margin-left: 0.35rem;
+    }
+
+    .link-separator {
+      color: var(--text-muted);
+      font-weight: 600;
+      margin: 0 0.15rem;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      padding: 1.5rem 0 0.75rem;
+    }
+
+    .audience-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-top: 0.8rem;
+    }
+
+    .audience-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.5rem 0.6rem;
+      border-radius: 8px;
+      background: #f9fafb;
+      border: 1px solid var(--border);
+    }
+
+    .audience-badge {
+      min-width: 1.6rem;
+      height: 1.6rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #1d4ed8;
+      font-weight: 600;
+      font-size: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 0;
+    }
+
+    .audience-item p {
+      margin: 0.2rem 0 0;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .soft-note {
+      margin-top: 0.9rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      border-top: 1px dashed var(--border);
+      padding-top: 0.7rem;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div class="header-inner">
+        <img src="brand-mark.jpg" alt="Christian Warfare logo" class="brand-mark" onerror="this.style.display='none'">
+        <div class="header-copy">
+          <div class="pill">
+            Christian Warfare Prayer & StudyLibrary
+            <span>Guide to the Google Drive folders</span>
+          </div>
+          <h2>Welcome to the Christian Warfare Prayer & Study Library</h1>
+          <p>This page is a simple guide to the Google Drive folders, explaining what each folder contains and helping you choose where to start—whether you are new to prayer or already leading others.</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="grid">
+        <!-- Start here card – intentionally disabled until content is ready -->
+        <!-- <section class="card" id="start-here-card"></section> -->
+
+        <!-- Who is this for – static text -->
+        <section class="card">
+          <h2>Who is this library for?</h2>
+          <p>This library is designed for three main groups:</p>
+
+          <div class="audience-list">
+            <div class="audience-item">
+              <span class="audience-badge">1</span>
+              <div>
+                <strong>New believers</strong>
+                <p>Learn how to pray and understand who God is.</p>
+              </div>
+            </div>
+
+            <div class="audience-item">
+              <span class="audience-badge">2</span>
+              <div>
+                <strong>Growing disciples</strong>
+                <p>Go deeper with verse-by-verse Bible studies and devotionals.</p>
+              </div>
+            </div>
+
+            <div class="audience-item">
+              <span class="audience-badge">3</span>
+              <div>
+                <strong>Leaders & intercessors</strong>
+                <p>Use the advanced prayer books, prophet school, and evangelist training.</p>
+              </div>
+            </div>
+          </div>
+
+          <p class="soft-note">
+            Pick the folder that best fits where you are right now. You can browse everything or jump to the section for your stage.
+          </p>
+        </section>
+
+      </div>
+
+      <h2 class="section-title">Not sure where to go?</h2>
+      <div class="card">
+        <p style="margin-top:0;">If you’re unsure:</p>
+        <ul class="steps">
+          <li>
+            If you are new to faith or prayer, start with:
+            <span class="recommend-links">
+              <a class="recommend-link" href="#beginner-prayer-books">Beginner Prayer books</a>
+              <span class="link-separator">·</span>
+              <a class="recommend-link" href="#homework-study-guides">Homework/Study guides</a>
+            </span>
+          </li>
+          <li>
+            If you already pray regularly, go to:
+            <span class="recommend-links">
+              <a class="recommend-link" href="#advanced-prayer-books">Advanced Prayer books</a>
+            </span>
+          </li>
+          <li>
+            If you want daily structure, try:
+            <span class="recommend-links">
+              <a class="recommend-link" href="#daily-devotionals">Daily devotionals</a>
+            </span>
+          </li>
+          <li>
+            If you’re leading or training others, jump to:
+            <span class="recommend-links">
+              <a class="recommend-link" href="#prophet-school">Prophet School</a>
+              <span class="link-separator">·</span>
+              <a class="recommend-link" href="#evangelist-training">Evangelist Training</a>
+            </span>
+          </li>
+        </ul>
+      </div>
+
+      <h2 class="section-title">Folder overview</h2>
+      <p style="margin-top:0; color: var(--text-muted); font-size:0.9rem;">
+        Click <strong>Open folder</strong> to go straight to the Google Drive folder.
+        Under each one you’ll see key books and suggestions on where to begin.
+      </p>
+
+      <div class="folder-list" id="folder-list"></div>
+
+      <footer>
+        All books and files live in Google Drive. This page is just an easier front door.
+      </footer>
+    </div>
+  </main>
+
+  <!-- Content data -->
+  <script src="content.js"></script>
+  <script>
+    (function () {
+      const data = window.DRIVE_CONTENT || {};
+
+      // Start here card intentionally disabled until content is ready.
+      // const startCard = document.getElementById("start-here-card");
+      // if (startCard && data.startHere) {
+      //   const steps = (data.startHere.steps || [])
+      //     .map(step => `<li>${step}</li>`)
+      //     .join("");
+      //
+      //   startCard.innerHTML = `
+      //     <h2>Start here ✅</h2>
+      //     <p><strong>If you are new, follow these steps first.</strong></p>
+      //     <ul class="steps">
+      //       ${steps}
+      //     </ul>
+      //     <div class="btn-row">
+      //       ${data.startHere.welcomeDocUrl
+      //       ? `<a class="btn btn-primary" href="${data.startHere.welcomeDocUrl}" target="_blank" rel="noopener">Open Welcome Doc</a>`
+      //       : ""
+      //     }
+      //       ${data.startHere.quickStartUrl
+      //       ? `<a class="btn" href="${data.startHere.quickStartUrl}" target="_blank" rel="noopener">Quick Start Guide</a>`
+      //       : ""
+      //     }
+      //     </div>
+      //   `;
+      // }
+
+      // Render folder cards
+      const listEl = document.getElementById("folder-list");
+      if (!listEl || !Array.isArray(data.folders)) return;
+
+      listEl.innerHTML = data.folders
+        .map(folder => {
+          const highlights = (folder.highlights || [])
+            .map(h => {
+              const text = `<strong>${h.title}</strong>${h.note ? ` – ${h.note}` : ""}`;
+              if (h.url) {
+                return `<li><a href="${h.url}" target="_blank" rel="noopener">${text}</a></li>`;
+              }
+              return `<li>${text}</li>`;
+            })
+            .join("");
+
+          return `
+            <article class="folder-card" id="${folder.id || ""}">
+              <div class="folder-header">
+                <div>
+                  <div class="folder-title">${folder.title}</div>
+                  ${folder.audience
+              ? `<div class="folder-audience">${folder.audience}</div>`
+              : ""
+            }
+                  <p style="margin:0.3rem 0 0; font-size:0.9rem; color:var(--text-muted);">
+                    ${folder.description || ""}
+                  </p>
+              </div>
+              ${folder.driveUrl
+              ? `<a class="btn" href="${folder.driveUrl}" target="_blank" rel="noopener">Open folder</a>`
+              : ""
+            }
+              </div>
+              ${highlights
+              ? `<div class="folder-highlights">
+                  <hr class="folder-divider">
+                  <div class="folder-highlights-title">Highlights from this folder</div>
+                  <ul class="file-list">${highlights}</ul>
+                </div>`
+              : ""
+            }
+            </article>
+          `;
+        })
+        .join("");
+    })();
+  </script>
+</body>
+
+</html>
