@@ -224,18 +224,19 @@
       list-style: none;
       padding: 0;
       margin: 1rem 0 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
     }
 
     .steps li {
       display: flex;
       align-items: center;
-      gap: 0.85rem;
-      padding: 0.7rem 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .steps li:last-child {
-      border-bottom: 0;
+      gap: 0.6rem;
+      padding: 0.7rem 0.85rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface-subtle);
     }
 
     .step-number {
@@ -257,14 +258,15 @@
     .step-body {
       display: flex;
       flex-direction: column;
-      gap: 0.35rem;
+      gap: 0.2rem;
       font-size: 0.95rem;
     }
 
     .step-label {
       margin: 0;
-      color: var(--text-main);
+      color: var(--text-muted);
       line-height: 1.4;
+      font-weight: 600;
     }
 
     .step-links {
@@ -326,32 +328,39 @@
 
     .folder-list {
       display: grid;
-      gap: 0.9rem;
+      gap: 1.05rem;
     }
 
     .folder-card {
       background: var(--card-bg);
-      border-radius: 10px;
+      border-radius: var(--radius);
       border: 1px solid var(--border);
-      padding: 1rem 1.1rem;
+      padding: 1.2rem 1.35rem;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
     }
 
     .folder-header {
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: flex-start;
       gap: 0.8rem;
+    }
+
+    .folder-header .btn {
+      align-self: flex-start;
+      flex-shrink: 0;
     }
 
     .folder-meta {
       display: flex;
       flex-direction: column;
-      gap: 0.25rem;
+      gap: 0.35rem;
     }
 
     .folder-title {
       font-weight: 600;
       margin: 0;
+      font-size: 1.05rem;
     }
 
     .folder-audience {
@@ -362,9 +371,10 @@
 
     .folder-description {
       margin: 0.35rem 0 0;
-      font-size: 0.92rem;
+      font-size: 0.95rem;
       color: var(--text-muted);
       line-height: 1.5;
+      max-width: 72ch;
     }
 
     .file-list {
@@ -379,13 +389,13 @@
     }
 
     .folder-highlights {
-      margin-top: 0.6rem;
+      margin-top: 0.75rem;
     }
 
     .folder-divider {
       border: 0;
       border-top: 1px solid var(--border);
-      margin: 0.8rem 0 0.5rem;
+      margin: 0.85rem 0 0.6rem;
     }
 
     .folder-highlights-title {
@@ -451,7 +461,14 @@
     }
 
     .recommend-links {
-      display: contents;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.15rem;
+    }
+
+    .recommend-links .recommend-link {
+      font-weight: 700;
     }
 
     .link-separator {
@@ -556,12 +573,7 @@
       }
 
       .steps li {
-        border: 1px solid var(--border);
-        border-radius: 10px;
         padding: 0.95rem 1rem;
-        background: var(--surface-subtle);
-        box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
-        border-bottom: 0;
       }
 
       .step-links {
@@ -581,7 +593,6 @@
 
       .folder-header {
         flex-direction: column;
-        align-items: flex-start;
         gap: 0.6rem;
       }
 
@@ -660,50 +671,50 @@
           </p>
         </section>
 
-      </div>
+        <section class="card">
+          <h2>Not sure where to go?</h2>
+          <ul class="steps">
+            <li>
+              <span class="step-number">1</span>
+              <div class="step-body">
+                <p class="step-label">If you are new to faith or prayer, start with:</p>
+                <div class="step-links recommend-links">
+                  <a class="recommend-link" href="#beginner-prayer-books">Beginner Prayer books</a>
+                  <a class="recommend-link" href="#homework-study-guides">Homework/Study guides</a>
+                </div>
+              </div>
+            </li>
+            <li>
+              <span class="step-number">2</span>
+              <div class="step-body">
+                <p class="step-label">If you already pray regularly, go to:</p>
+                <div class="step-links recommend-links">
+                  <a class="recommend-link" href="#advanced-prayer-books">Advanced Prayer books</a>
+                </div>
+              </div>
+            </li>
+            <li>
+              <span class="step-number">3</span>
+              <div class="step-body">
+                <p class="step-label">If you want daily structure, try:</p>
+                <div class="step-links recommend-links">
+                  <a class="recommend-link" href="#daily-devotionals">Daily devotionals</a>
+                </div>
+              </div>
+            </li>
+            <li>
+              <span class="step-number">4</span>
+              <div class="step-body">
+                <p class="step-label">If you’re leading or training others, jump to:</p>
+                <div class="step-links recommend-links">
+                  <a class="recommend-link" href="#prophet-school">Prophet School</a>
+                  <a class="recommend-link" href="#evangelist-training">Evangelist Training</a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </section>
 
-      <h2 class="section-title">Not sure where to go?</h2>
-      <div class="card">
-        <ul class="steps">
-          <li>
-            <span class="step-number">1</span>
-            <div class="step-body">
-              <p class="step-label">If you are new to faith or prayer, start with:</p>
-              <div class="step-links recommend-links">
-                <a class="recommend-link" href="#beginner-prayer-books">Beginner Prayer books</a>
-                <a class="recommend-link" href="#homework-study-guides">Homework/Study guides</a>
-              </div>
-            </div>
-          </li>
-          <li>
-            <span class="step-number">2</span>
-            <div class="step-body">
-              <p class="step-label">If you already pray regularly, go to:</p>
-              <div class="step-links recommend-links">
-                <a class="recommend-link" href="#advanced-prayer-books">Advanced Prayer books</a>
-              </div>
-            </div>
-          </li>
-          <li>
-            <span class="step-number">3</span>
-            <div class="step-body">
-              <p class="step-label">If you want daily structure, try:</p>
-              <div class="step-links recommend-links">
-                <a class="recommend-link" href="#daily-devotionals">Daily devotionals</a>
-              </div>
-            </div>
-          </li>
-          <li>
-            <span class="step-number">4</span>
-            <div class="step-body">
-              <p class="step-label">If you’re leading or training others, jump to:</p>
-              <div class="step-links recommend-links">
-                <a class="recommend-link" href="#prophet-school">Prophet School</a>
-                <a class="recommend-link" href="#evangelist-training">Evangelist Training</a>
-              </div>
-            </div>
-          </li>
-        </ul>
       </div>
 
       <h2 class="section-title">Folder overview</h2>

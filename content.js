@@ -23,7 +23,7 @@ window.DRIVE_CONTENT = {
 
     {
       id: "beginner-prayer-books",
-      title: "Beginner Prayer books",
+      title: "Beginner Prayer Books",
       driveUrl: "https://drive.google.com/drive/folders/1cYtN1cXOUf3gS8tjE1mcmK-893AsVbpO?usp=drive_link",
       description:
         "Short and simple books to help new believers and those who are just beginning to grow in prayer.",
@@ -44,7 +44,7 @@ window.DRIVE_CONTENT = {
 
     {
       id: "advanced-prayer-books",
-      title: "Advanced Prayer books",
+      title: "Advanced Prayer Books",
       driveUrl: "https://drive.google.com/drive/folders/1J5kmPP6Nv6-BQ5f-w4KBYjR0jc-IxocT?usp=drive_link",
       description:
         "Deeper material for people already comfortable praying regularly and wanting to grow in intercession.",
@@ -75,7 +75,7 @@ window.DRIVE_CONTENT = {
 
     {
       id: "daily-devotionals",
-      title: "Daily devotionals",
+      title: "Daily Devotionals",
       driveUrl: "https://drive.google.com/drive/folders/1WF-VXFHTCvoPchuhH8d1AVZIQLegNTv0?usp=drive_link",
       description:
         "Short daily readings and prayers to help you build a regular rhythm with God.",
@@ -143,7 +143,7 @@ window.DRIVE_CONTENT = {
 
     {
       id: "homework-study-guides",
-      title: "Homework / Study guides",
+      title: "Homework / Study Guides",
       driveUrl: "https://drive.google.com/drive/folders/1hJoAAKfLEUprCOInD47JMHznTczem24l?usp=drive_link",
       description:
         "Generally contain 7-day study guides. Explaining what to read, what the focus is, the key scriptures and questions for reflection.",
@@ -179,7 +179,7 @@ window.DRIVE_CONTENT = {
 
     {
       id: "praying-for-gifts-of-healing",
-      title: "Praying for gifts of healing",
+      title: "Praying For Gifts Of Healing",
       driveUrl: "https://drive.google.com/drive/folders/1ZPU_sc_c4A2s4YK402B9SOr7XWh4_SDf?usp=drive_link",
       description: "Praying for healing of various disorders and diseases",
       audience: ",,,",
@@ -217,7 +217,7 @@ window.DRIVE_CONTENT = {
 
     {
       id: "short-prayer-books",
-      title: "Short prayer books",
+      title: "Short Prayer Books",
       driveUrl: "https://drive.google.com/drive/folders/1SM-Bjah7OsxnncBE0V8CgFQzXwR0Ir4_?usp=drive_link",
       description: "Short prayer books containing prayer points for people with limited time",
       audience: "Anyone who doesnt have multiple hours in the evening to spare can find resources here",
@@ -235,7 +235,7 @@ window.DRIVE_CONTENT = {
 
     {
       id: "unedited-prayer-books-new",
-      title: "unedited prayer books NEW",
+      title: "Unedited Prayer Books NEW",
       driveUrl: "https://drive.google.com/drive/folders/14_EvD0ZE8Sm8d4Wh0dW8fU7iDFf7n2HM?usp=drive_link",
       description: "A collection of new prayerbooks that haven't been edited on a computer yet",
       audience: ",,,",
@@ -244,7 +244,7 @@ window.DRIVE_CONTENT = {
 
     {
       id: "warfare-prayer-books",
-      title: "Warfare prayer books",
+      title: "Warfare Prayer Books",
       driveUrl: "https://drive.google.com/drive/folders/1UQunaBX9LjV-R9WURSO2FHTUsBXQ--1D?usp=drive_link",
       description: "Warfare prayer books - Heavy hitting stuff",
       audience: "For dealing with heavy spiritual attacks or generational issues",
